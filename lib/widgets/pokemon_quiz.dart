@@ -1,11 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:pokequiz/models/pokemon.dart';
 import 'package:pokequiz/services/quiz_services.dart';
 import 'package:pokequiz/utils/string_extension.dart';
 import 'package:pokequiz/widgets/pokemon_buttons.dart';
-import 'package:pokequiz/widgets/pokemon_card_data.dart';
+import 'package:pokequiz/widgets/pokemon_image.dart';
 import 'package:pokequiz/widgets/pokemon_score.dart';
 
 class PokemonQuiz extends StatefulWidget {
@@ -65,7 +64,7 @@ class _PokemonQuizState extends State<PokemonQuiz> {
             text02: "Erros: ${QuizServices.incorrectAnswers}",
           ),
           //pokemon card
-          PokemonCardData(pokemon: currentPokemon),
+          PokemonImage(pokemon: currentPokemon),
           //botoes
           for (var i = 0; i < 4; i++)
             PokemonButton(
@@ -73,7 +72,7 @@ class _PokemonQuizState extends State<PokemonQuiz> {
               function: () {
                 setState(() {
                   //verificacao da resposta
-                  quizServices.checkPokemonCorrect(
+                  quizServices.checkPokemonAnswer(
                       buttonNames[i], currentPokemon.name.capitalize());
                 });
                 // verificacao se o quiz terminou
@@ -82,7 +81,7 @@ class _PokemonQuizState extends State<PokemonQuiz> {
                     10) {
                   isQuizFinished = true;
                 }
-
+                // se o quiz terminou
                 if (isQuizFinished) {
                   showDialog(
                     context: context,
@@ -112,6 +111,7 @@ class _PokemonQuizState extends State<PokemonQuiz> {
                       );
                     },
                   );
+                  // se nao terminou
                 } else {
                   updatePokemon();
                 }

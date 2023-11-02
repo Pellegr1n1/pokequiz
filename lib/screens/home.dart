@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokequiz/api/pokemon_api.dart';
-import 'package:pokequiz/widgets/pokemon_Quiz.dart';
+import 'package:pokequiz/widgets/pokemon_quiz.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

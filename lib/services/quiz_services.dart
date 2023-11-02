@@ -19,21 +19,19 @@ class QuizServices {
         int randomIndex;
         do {
           randomIndex = Random().nextInt(pokemonList.length);
-        } while (randomIndex == pokemon); // Garantir nomes diferentes
+        } while (randomIndex == pokemon); // garantir nomes diferentes
         return pokemonList[randomIndex].name.capitalize();
       }
     });
     return buttonNames;
   }
 
-  bool checkPokemonCorrect(String selected, String correct) {
+  bool checkPokemonAnswer(String selected, String correct) {
     if (selected == correct) {
       correctAnswers++;
-      print("Correto");
       return true;
     } else {
       incorrectAnswers++;
-      print("Errado");
       return false;
     }
   }
